@@ -98,8 +98,9 @@ export class DocCreateField implements INodeType {
 					);
 				}
 
-				const maxPdfSize = this.getNodeParameter('maxPdfSize', itemIndex, 10) * 1024 * 1024;
-				if (docBinaryData.size > maxPdfSize) {
+				const maxPdfSizeRaw = this.getNodeParameter('maxPdfSize', itemIndex, 10);
+				const maxPdfSize = (typeof maxPdfSizeRaw === 'number' ? maxPdfSizeRaw : Number(maxPdfSizeRaw) || 10) * 1024 * 1024;
+				if (docBinaryData && typeof docBinaryData.size === 'number' && docBinaryData.size > maxPdfSize) {
 					throw new NodeOperationError(
 						this.getNode(),
 						`Input (on binary property "${dataPropertyName}") exceeds maximum allowed size of ${maxPdfSize} bytes`,
