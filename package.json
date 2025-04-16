@@ -9,12 +9,12 @@
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "Roman Muzikantov",
-    "email": "roman.muzikantov@gmail.com"
+    "name": "David Ruzicka",
+    "email": "davidruzicka@post.cz"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/romanmuzikantov/n8n-nodes-doc-fill"
+    "url": "https://github.com/davidruzicka/n8n-nodes-doc-fill"
   },
   "main": "index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/DocFill/DocFill.node.js",
+      "dist/nodes/DocGetFormInfo/DocGetFormInfo.node.js",
       "dist/nodes/DocCreateField/DocCreateField.node.js"
     ]
   },
