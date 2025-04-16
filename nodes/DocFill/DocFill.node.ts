@@ -39,6 +39,14 @@ const nodeOperationOptions: INodeProperties[] = [
 		description:
 			'JSON used to map the keys in the PDF form to the corresponding values',
 	},
+	{
+		displayName: 'Max PDF Size',
+		name: 'maxPdfSize',
+		type: 'number',
+		default: 10,
+		description:
+			'Maximum size of the PDF file in MB',
+	},
 ];
 
 export class DocFill implements INodeType {
@@ -87,6 +95,15 @@ export class DocFill implements INodeType {
 					throw new NodeOperationError(
 						this.getNode(),
 						`Input (on binary property "${dataPropertyName}") should be a PDF file, was ${docBinaryData.mimeType} instead`,
+						{ itemIndex },
+					);
+				}
+
+				const maxPdfSize = this.getNodeParameter('maxPdfSize', itemIndex, 10) * 1024 * 1024;
+				if (docBinaryData.size > maxPdfSize) {
+					throw new NodeOperationError(
+						this.getNode(),
+						`Input (on binary property "${dataPropertyName}") exceeds maximum allowed size of ${maxPdfSize} bytes`,
 						{ itemIndex },
 					);
 				}

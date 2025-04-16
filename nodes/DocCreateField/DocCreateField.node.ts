@@ -39,6 +39,14 @@ const nodeOperationOptions: INodeProperties[] = [
 		description:
 			'JSON defining the fields to be created in the PDF passed as input',
 	},
+	{
+		displayName: 'Max PDF Size',
+		name: 'maxPdfSize',
+		type: 'number',
+		default: 10,
+		description:
+			'Maximum size of the PDF file in MB',
+	},
 ];
 
 export class DocCreateField implements INodeType {
@@ -86,6 +94,15 @@ export class DocCreateField implements INodeType {
 					throw new NodeOperationError(
 						this.getNode(),
 						`Input (on binary property "${dataPropertyName}") should be a PDF file, was ${docBinaryData.mimeType} instead`,
+						{ itemIndex },
+					);
+				}
+
+				const maxPdfSize = this.getNodeParameter('maxPdfSize', itemIndex, 10) * 1024 * 1024;
+				if (docBinaryData.size > maxPdfSize) {
+					throw new NodeOperationError(
+						this.getNode(),
+						`Input (on binary property "${dataPropertyName}") exceeds maximum allowed size of ${maxPdfSize} bytes`,
 						{ itemIndex },
 					);
 				}
