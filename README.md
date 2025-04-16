@@ -1,17 +1,65 @@
 # n8n-nodes-doc-fill
 
-This repo contains two n8n nodes:
+**n8n-nodes-doc-fill** is a custom node package for [n8n](https://n8n.io/) that allows you to programmatically extract PDF form field info, fill PDF forms, and add text to PDFs from your n8n workflows. It contains three nodes:
 
-* Doc Fill which, given a PDF with a form as input, retrieves the fields based on the given keys and inserts the given value for the retrieved field.
-* Doc Create Field which adds a text to a given page's coordinates.
+* **Doc Get Form Info** – Analyze a PDF and extract information about all form fields present in the document.
+* **Doc Fill** – Retrieve and fill PDF form fields based on provided keys and values.
+* **Doc Create Field** – Add custom text at specified coordinates on a PDF page.
+
+---
+
+## Requirements
+
+- [n8n](https://n8n.io/) (Tested with version 1.0.0 and later)
+- Node.js >= 16.x
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for bug fixes, feature requests, or improvements.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE.md) for details.
+
+---
+
+## Doc Get Form Info
+
+The **Doc Get Form Info** node analyzes a PDF file and extracts information about all form fields present in the document.
+
+### Parameters
+
+- **Property Name**: The name of the binary property containing the PDF file to analyze (default: `data`).
+- **Max PDF Size**: Maximum allowed size of the PDF file in MB (default: 10).
+
+### Output
+
+The node outputs a JSON object with:
+- `totalFields`: The total number of form fields detected in the PDF.
+- `fields`: An array of objects, each containing:
+  - `name`: The field's name.
+  - `type`: The type of the field (e.g., textfield, checkbox, radiogroup, dropdown).
+
+### Example Output
+
+```json
+{
+  "totalFields": 2,
+  "fields": [
+    { "name": "firstName", "type": "textfield" },
+    { "name": "acceptTerms", "type": "checkbox" }
+  ]
+}
+```
 
 ## Doc Fill
 
-Doc Fill takes a PDF as input and 3 parameters: Property Name, Property Name Out, Configuration JSON.
+Doc Fill takes a PDF as input and 4 parameters: Property Name, Property Name Out, Configuration JSON, Max PDF Size.
 
-* Property Name should be the internal name representing the PDF file given as input (default is 'data').
-* Property Name Out is the internal name you want to give to the output PDF file (default is 'data').
-* Configuration JSON is a JSON following the structure given below to specify which fields you want to change.
+* **Property Name**: The internal name representing the PDF file given as input (default: 'data').
+* **Property Name Out**: The internal name you want to give to the output PDF file (default: 'data').
+* **Configuration JSON**: A JSON following the structure given below to specify which fields you want to change.
+* **Max PDF Size**: Maximum allowed size of the PDF file in MB (default: 10).
 
 ### Configuration JSON structure
 
@@ -48,11 +96,12 @@ interface DocFillConfig {
 
 ## Doc Create Field
 
-Doc Create Field takes a PDF as input and 3 parameters: Property Name, Property Name Out, Configuration JSON.
+Doc Create Field takes a PDF as input and 4 parameters: Property Name, Property Name Out, Configuration JSON, Max PDF Size.
 
-* Property Name should be the internal name representing the PDF file given as input (default is 'data').
-* Property Name Out is the internal name you want to give to the output PDF file (default is 'data').
-* Configuration JSON is a JSON following the structure given below to specify the text you want to draw and how/where you want to draw it.
+* **Property Name**: The internal name representing the PDF file given as input (default: 'data').
+* **Property Name Out**: The internal name you want to give to the output PDF file (default: 'data').
+* **Configuration JSON**: A JSON following the structure given below to specify the text you want to draw and how/where you want to draw it.
+* **Max PDF Size**: Maximum allowed size of the PDF file in MB (default: 10).
 
 ### Configuration JSON structure
 
