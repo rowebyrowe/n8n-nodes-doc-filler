@@ -37,7 +37,13 @@ const nodeOperationOptions: INodeProperties[] = [
 		type: 'json',
 		default: '',
 		description:
-			'JSON used to map the keys in the PDF form to the corresponding values',
+			'JSON used to map the keys in the PDF form to the corresponding values:'+
+			'{\n'+
+			'    key: string,\n'+
+			'    value: string,\n'+
+			'    type: "textfield" | "checkbox" | "dropdown" | "radiogroup",\n'+
+			'}'+
+			'Accepted values for type: "checkbox" are "true" (checked) or any other string value (unchecked)',
 	},
 	{
 		displayName: 'Max PDF Size',

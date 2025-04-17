@@ -37,7 +37,7 @@ export class DocGetFormFields implements INodeType {
 		name: 'docGetFormFields',
 		group: ['transform'],
 		version: 1,
-		description: 'Gets form field information from a PDF document.',
+		description: 'Gets form fields information from a PDF document.',
 		defaults: {
 			name: 'Doc Get Form Fields',
 		},

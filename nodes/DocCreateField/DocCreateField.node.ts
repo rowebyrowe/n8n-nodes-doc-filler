@@ -37,7 +37,20 @@ const nodeOperationOptions: INodeProperties[] = [
 		type: 'json',
 		default: '',
 		description:
-			'JSON defining the fields to be created in the PDF passed as input',
+			'JSON defining the fields to be created in the PDF passed as input:'+
+			'{\n'+
+			'    page: number,\n'+
+			'    value: string,\n'+
+			'    options: {\n'+
+			'        x: number,\n'+
+			'        y: number,\n'+
+			'        size: number | undefined,\n'+
+			'        opacity: number | undefined,\n'+
+			'        colorRed: number | undefined,\n'+
+			'        colorGreen: number | undefined,\n'+
+			'        colorBlue: number | undefined,\n'+
+			'    }\n'+
+			'}',
 	},
 	{
 		displayName: 'Max PDF Size',

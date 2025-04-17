@@ -4,9 +4,9 @@ import { PDFCheckBox, PDFDropdown, PDFForm, PDFRadioGroup, PDFTextField } from "
 const isPDFDocument = (data: IBinaryData) => data.mimeType === 'application/pdf';
 
 interface DocFillConfig {
-    key: string;
-    value: string;
-    type: 'textfield' | 'checkbox' | 'dropdown' | 'radiogroup';
+    key: string,
+    value: string,
+    type: 'textfield' | 'checkbox' | 'dropdown' | 'radiogroup',
 }
 
 const fillForm = (pdfForm: PDFForm, config: DocFillConfig): { success: boolean, errorMessage: string } => {

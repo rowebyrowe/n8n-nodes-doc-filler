@@ -5,7 +5,7 @@ const isPDFDocument = (data: IBinaryData) => data.mimeType === 'application/pdf'
 
 interface DocCreateFieldConfig {
     page: number,
-    value: string;
+    value: string,
     options: {
         x: number,
         y: number,
