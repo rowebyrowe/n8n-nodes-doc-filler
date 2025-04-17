@@ -1,6 +1,6 @@
 # n8n-nodes-doc-filler
 
-**n8n-nodes-doc-filler** is a custom node package for [n8n](https://n8n.io/) derived from [n8n-nodes-doc-fill](https://github.com/n8n-io/n8n-nodes-doc-fill) that allows you to programmatically extract PDF form field info, fill PDF forms, and add text to PDFs from your n8n workflows. It contains three nodes:
+**n8n-nodes-doc-filler** is a custom node package for [n8n](https://n8n.io/) derived from [n8n-nodes-doc-fill](https://github.com/romanmuzikantov/n8n-nodes-doc-fill) that allows you to programmatically extract PDF form field info, fill PDF forms, and add text to PDFs from your n8n workflows. It contains three nodes:
 
 * **Doc Get Form Fields** – Analyze a PDF and extract information about all form fields present in the document.
 * **Doc Fill** – Retrieve and fill PDF form fields based on provided keys and values.
