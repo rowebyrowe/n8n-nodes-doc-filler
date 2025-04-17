@@ -9,6 +9,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
+import { isPdfDocument } from './DocGetFormFieldsUtils';
 import { PDFDocument } from 'pdf-lib';
 
 const nodeOperationOptions: INodeProperties[] = [
@@ -66,7 +67,7 @@ export class DocGetFormFields implements INodeType {
 					);
 				}
 
-				if (docBinaryData.mimeType !== 'application/pdf') {
+				if (!isPdfDocument(docBinaryData)) {
 					throw new NodeOperationError(
 						this.getNode(),
 						`Input (on binary property "${dataPropertyName}") should be a PDF file, was ${docBinaryData.mimeType} instead`,
@@ -85,6 +86,13 @@ export class DocGetFormFields implements INodeType {
 				}
 
 				const docBuffer = await this.helpers.getBinaryDataBuffer(itemIndex, dataPropertyName);
+				if (docBuffer.length > maxPdfSize) {
+					throw new NodeOperationError(
+						this.getNode(),
+						`Input (on binary property "${dataPropertyName}") exceeds maximum allowed size of ${maxPdfSize} bytes`,
+						{ itemIndex },
+					);
+				}
 				const pdfDoc = await PDFDocument.load(docBuffer);
 				const form = pdfDoc.getForm();
 				const fields = form.getFields();

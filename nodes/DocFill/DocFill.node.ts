@@ -117,8 +117,15 @@ export class DocFill implements INodeType {
 				docFillConfigs = JSON.parse(jsonString);
 
 				docFillConfigs.forEach((el) => {
-					fillForm(pdfForm, el);
-				})
+					const { success, errorMessage } = fillForm(pdfForm, el);
+					if (!success) {
+						throw new NodeOperationError(
+							this.getNode(),
+							`Error in field ${el.key}: ${errorMessage}`,
+							{ itemIndex },
+						);
+					}
+				});
 
 				let savedDoc = await pdfDoc.save();
 

@@ -9,7 +9,8 @@ interface DocFillConfig {
     type: 'textfield' | 'checkbox' | 'dropdown' | 'radiogroup';
 }
 
-const fillForm = (pdfForm: PDFForm, config: DocFillConfig): void => {
+const fillForm = (pdfForm: PDFForm, config: DocFillConfig): { success: boolean, errorMessage: string } => {
+    let result: { success: boolean, errorMessage: string } = { success: true, errorMessage: '' };
     switch(config.type) {
         case 'textfield': {
             const pdfTextField = pdfForm.getTextField(config.key);
@@ -31,7 +32,13 @@ const fillForm = (pdfForm: PDFForm, config: DocFillConfig): void => {
             fillFormRadioGroup(pdfRadioGroup, config);
             break;
         }
+        default: {
+            result.success = false;
+            result.errorMessage = `Invalid field type: ${config.type}`;
+            break;
+        }
     }
+    return result;
 }
 
 const fillFormTextField = (pdfTextField: PDFTextField, config: DocFillConfig): void => {
