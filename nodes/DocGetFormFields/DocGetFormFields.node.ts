@@ -30,15 +30,15 @@ const nodeOperationOptions: INodeProperties[] = [
 	},
 ];
 
-export class DocGetFormInfo implements INodeType {
+export class DocGetFormFields implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'Doc Get Form Info',
-		name: 'docGetFormInfo',
+		displayName: 'Doc Get Form Fields',
+		name: 'docGetFormFields',
 		group: ['transform'],
 		version: 1,
 		description: 'Gets form field information from a PDF document.',
 		defaults: {
-			name: 'Doc Get Form Info',
+			name: 'Doc Get Form Fields',
 		},
 		inputs: ['main'],
 		inputNames: ['Document'],

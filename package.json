@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-doc-fill",
+  "name": "n8n-nodes-doc-filler",
   "version": "0.3.1",
   "description": "Node made to fill a PDF form.",
   "keywords": [
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/davidruzicka/n8n-nodes-doc-fill"
+    "url": "https://github.com/davidruzicka/n8n-nodes-doc-filler"
   },
   "main": "index.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "n8nNodesApiVersion": 1,
     "nodes": [
       "dist/nodes/DocFill/DocFill.node.js",
-      "dist/nodes/DocGetFormInfo/DocGetFormInfo.node.js",
+      "dist/nodes/DocGetFormFields/DocGetFormFields.node.js",
       "dist/nodes/DocCreateField/DocCreateField.node.js"
     ]
   },
