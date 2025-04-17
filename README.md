@@ -11,7 +11,7 @@
 ## Requirements
 
 - [n8n](https://n8n.io/) (Tested with version 1.0.0 and later)
-- Node.js >= 16.x
+- Node.js >= 18.x
 
 ## Contributing
 
