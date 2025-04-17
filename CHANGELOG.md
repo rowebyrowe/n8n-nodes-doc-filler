@@ -2,9 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.3] - 2025-04-17
+### Changed
+- Removed memory consumption in nodes with continueOnFail enabled by pushing errors to returnData instead of items.
+- Minor doc and config cleanups.
+
+### Added
+- Unit tests and coverage for all nodes.
+
 ## [0.3.1] - 2025-04-16
 ### Fixed
-- Opraveny typové chyby a kontroly existence hodnot při práci s parametrem `maxPdfSize` a objektem `docBinaryData` ve všech nodes.
+- Fixed type errors and existence checks for `maxPdfSize` parameter and `docBinaryData` object in all nodes.
 
 ## [0.3.0] - 2025-04-16
 ### Added
