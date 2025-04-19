@@ -147,7 +147,7 @@ describe('DocGetFormFields Node', () => {
     const output = result[0][0].json;
     expect(output.totalFields).toBe(3);
     const fields = Array.isArray(output.fields) ? output.fields : [];
-    expect(fields.map((f: any) => f.name)).toEqual(
+    expect(fields.map((f: any) => f.key)).toEqual(
       expect.arrayContaining(['TestField', 'Check1', 'Radio1'])
     );
   });

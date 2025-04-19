@@ -39,7 +39,7 @@ The **Doc Get Form Fields** node analyzes a PDF file and extracts information ab
 The node outputs a JSON object with:
 - `totalFields`: The total number of form fields detected in the PDF.
 - `fields`: An array of objects, each containing:
-  - `name`: The field's name.
+  - `key`: The field's key.
   - `type`: The type of the field (e.g., textfield, checkbox, radiogroup, dropdown).
 
 ### Example Output
@@ -48,8 +48,8 @@ The node outputs a JSON object with:
 {
   "totalFields": 2,
   "fields": [
-    { "name": "firstName", "type": "textfield" },
-    { "name": "acceptTerms", "type": "checkbox" }
+    { "key": "firstName", "type": "textfield" },
+    { "key": "acceptTerms", "type": "checkbox" }
   ]
 }
 ```

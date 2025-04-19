@@ -98,7 +98,7 @@ export class DocGetFormFields implements INodeType {
 				const fields = form.getFields();
 
 				const formFields = fields.map(field => ({
-					name: field.getName(),
+					key: field.getName(),
 					type: field.constructor.name.replace('PDF', '').toLowerCase(),
 				}));
 
