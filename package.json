@@ -1,7 +1,7 @@
 {
   "name": "n8n-nodes-doc-filler",
-  "version": "0.3.3",
-  "description": "Node made to fill a PDF form.",
+  "version": "0.3.4",
+  "description": "Node made to fill a PDF form or get form fields from PDF.",
   "keywords": [
     "n8n-community-node-package"
   ],

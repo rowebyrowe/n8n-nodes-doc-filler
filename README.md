@@ -6,6 +6,13 @@
 * **Doc Fill** – Retrieve and fill PDF form fields based on provided keys and values.
 * **Doc Create Field** – Add custom text at specified coordinates on a PDF page.
 
+Benefits of this node package:
+
+* fixed memory consumption issue in **Doc Fill** and **Doc Create Field** when `Continue On Error` is enabled and exception is thrown.
+* **Doc Get Form Fields** extends functionality by adding the ability to extract form fields from a PDF.
+* better error handling and better description of node parameters.
+* added unit tests and coverage for all nodes.
+
 ---
 
 ## Requirements
