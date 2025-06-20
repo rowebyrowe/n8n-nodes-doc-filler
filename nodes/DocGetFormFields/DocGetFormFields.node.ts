@@ -10,7 +10,7 @@ import {
 } from 'n8n-workflow';
 
 import { isPdfDocument } from './DocGetFormFieldsUtils';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, PDFTextField } from 'pdf-lib';
 
 const nodeOperationOptions: INodeProperties[] = [
 	{
@@ -97,10 +97,21 @@ export class DocGetFormFields implements INodeType {
 				const form = pdfDoc.getForm();
 				const fields = form.getFields();
 
-				const formFields = fields.map(field => ({
-					key: field.getName(),
-					type: field.constructor.name.replace('PDF', '').toLowerCase(),
-				}));
+				const formFields = fields.map(field => {
+					const commonInfo = {
+						key: field.getName(),
+						type: field.constructor.name.replace('PDF', '').toLowerCase()
+					};
+
+					if (field instanceof PDFTextField) {
+						const maxLength = field.getMaxLength();
+						return {
+							...commonInfo,
+							maxLength: maxLength !== undefined ? maxLength : 'Unlimited',
+						};
+					}
+					return commonInfo;
+				});
 
 				const result: INodeExecutionData = {
 					json: {

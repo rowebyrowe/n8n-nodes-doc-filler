@@ -48,6 +48,7 @@ The node outputs a JSON object with:
 - `fields`: An array of objects, each containing:
   - `key`: The field's key.
   - `type`: The type of the field (e.g., textfield, checkbox, radiogroup, dropdown).
+  - `maxLength`: Maximum allowed character length if the field is a textfield.
 
 ### Example Output
 
